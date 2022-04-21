@@ -59,7 +59,14 @@ function ComponentFactory(attributes){
 	return component;
 }
 
-let HealthComponent = ComponentFactory({"name":"HealthComponent"});
+let HealthComponent = ComponentFactory({
+	name:"HealthComponent",
+	max_health:10,
+	current:10,
+	damage:function(value){if(this.current-value>=0){this.current=this.current-value}},
+	heal:function(value){if(this.current+value<=this.max_health){this.current=this.current+value}},
+});
+
 print(HealthComponent);
 /*
 FIREBALL SPELL   
@@ -72,12 +79,12 @@ DAMAGE 			[]			DAMAGE TARGET
 let fireball =[0x04, 1,0x04,0,0x05];
 
 const INSTRUCTIONS={
-	"ADD":0x00,
-	"SUB":0x01,
-	"MUL":0x02,
-	"DIV":0x03,
-	"LITERAL":0x04,
-	"DAMAGE":0x05,
+	ADD:0x00,
+	SUB:0x01,
+	MUL:0x02,
+	DIV:0x03,
+	LITERAL:0x04,
+	DAMAGE:0x05,
 }
 
 
