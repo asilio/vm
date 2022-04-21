@@ -39,13 +39,26 @@ class Entity{
 				return component;
 		}
 	}
+
+	getComponentByName(name){
+		for(let i =0;i<this.components.length;i++){
+          	let component = this.components[i];
+			if(component.name ===name)
+				return component;
+		}
+	}
 }
 
 class Component{
 	constructor(){
 		this.entity= undefined;
+		this.name="";
 		this.id = CUID++;
 		COMPONENTS.push(this);
+	}
+
+	update(dt){
+
 	}
 }
 
@@ -63,11 +76,18 @@ let HealthComponent = ComponentFactory({
 	name:"HealthComponent",
 	max_health:10,
 	current:10,
-	damage:function(value){if(this.current-value>=0){this.current=this.current-value}},
-	heal:function(value){if(this.current+value<=this.max_health){this.current=this.current+value}},
+	damage:function(value){
+		if(this.current-value>=0){this.current=this.current-value}
+	},
+	heal:function(value){
+		if(this.current+value<=this.max_health){this.current=this.current+value}
+	},
 });
 
 print(HealthComponent);
+
+let entity = new Entity();
+entity.addComponent(HealthComponent);
 /*
 FIREBALL SPELL   
 CODE 			STACK  		COMMENT
