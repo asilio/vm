@@ -51,14 +51,16 @@ class Component{
 
 function ComponentFactory(attributes){
 	let component = new Component();
-	for(key, val in attributes){
-		print(`${key}:${val})`);
+	for(key in attributes){
+		let value = attributes[key];
+		component[key] = value;
+		print(`${key}:${value})`);
 	}
 	return component;
 }
 
 let HealthComponent = ComponentFactory({"name":"HealthComponent"});
-print("Hey");
+print(HealthComponent);
 /*
 FIREBALL SPELL   
 CODE 			STACK  		COMMENT
