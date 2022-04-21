@@ -58,7 +58,7 @@ function ComponentFactory(attributes){
 }
 
 let HealthComponent = ComponentFactory({"name":"HealthComponent"});
-
+print("Hey");
 /*
 FIREBALL SPELL   
 CODE 			STACK  		COMMENT
