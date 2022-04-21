@@ -29,7 +29,7 @@ class Entity{
 
 	addComponent(component){
 		this.components.push(component);
-        component.parentID = this.id;
+        component.entity = this;
 	}
 
 	getComponentByClass(classType){
@@ -42,38 +42,22 @@ class Entity{
 }
 
 class Component{
-	constructor(attributes){
-		this.parentID = undefined;
+	constructor(){
+		this.entity= undefined;
 		this.id = CUID++;
-		this.attributes = {};
-		Object.assign(this.attributes,attributes);
 		COMPONENTS.push(this);
 	}
 }
 
-//testing some things
-let wiz_01 = new Entity();
-let wiz_02 = new Entity();
-
-class HealthComponent extends Component{
-	constructor(attributes){
-		super(attributes);
+function ComponentFactory(attributes){
+	let component = new Component();
+	for(key, val in attributes){
+		print(`${key}:${val})`);
 	}
-
-	damage(amt){
-		let result = this.attributes["current"]-amt;
-		this.attributes["current"]=Math.max(0,result);
-	}
-
-	heal(amt){
-		let result = this.attributes["current"]+amt;
-		this.attributes["current"]=Math.min(this.attributes["max_health"],result);
-	}
+	return component;
 }
 
-wiz_01.addComponent(new HealthComponent({"current":10,"max_health":10}));
-wiz_02.addComponent(new HealthComponent({"current":10,"max_health":10}));
-
+let HealthComponent = ComponentFactory({"name":"HealthComponent"});
 
 /*
 FIREBALL SPELL   
@@ -92,7 +76,6 @@ const INSTRUCTIONS={
 	"DIV":0x03,
 	"LITERAL":0x04,
 	"DAMAGE":0x05,
-
 }
 
 
@@ -160,8 +143,3 @@ class VM{
         print(`-------------------`);
 	}
 }
-
-let vm = new VM();
-vm.interpret(fireball);
-print(wiz_01.getComponentByClass(HealthComponent).attributes["current"]);
-print(wiz_02.getComponentByClass(HealthComponent).attributes["current"]);
