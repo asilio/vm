@@ -116,7 +116,9 @@ LITERAL 1
 LITERAL 3
 ADD
 `;
+console.log(test);
 let bc = AssemblyToBytecode(test);
+console.log(bc);
 let vm = new VM();
 vm.interpret(bc);
 console.log("END VM");
