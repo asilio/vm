@@ -15,12 +15,15 @@ const INSTRUCTIONS={
 
 function AssemblyToBytecode(code){/*
 We would like to be able to roll something along the lines of:
+
 LITERAL 1
 LITERAL 3
 ADD
 
 into 
+
 [0x04, 1,0x04,3,0x00]
+
 	*/
 	let result = [];
 	code = code.replaceAll("\n");
@@ -116,3 +119,4 @@ ADD
 let bc = AssemblyToBytecode(test);
 let vm = new VM();
 vm.interpret(bc);
+console.log("END VM");
