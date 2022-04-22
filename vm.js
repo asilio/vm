@@ -72,17 +72,26 @@ function ComponentFactory(attributes){
 	return component;
 }
 
-let HealthComponent = ComponentFactory({
-	name:"HealthComponent",
-	max_health:10,
-	current:10,
-	damage:function(value){
-		if(this.current-value>=0){this.current=this.current-value}
-	},
-	heal:function(value){
-		if(this.current+value<=this.max_health){this.current=this.current+value}
-	},
-});
+const COMPONENT_TEMPLATES ={
+	HealthComponent = {
+		max_health:10,
+		current:10,
+		damage:function(value){
+			if(this.current-value>=0){this.current=this.current-value}
+		},
+		heal:function(value){
+			if(this.current+value<=this.max_health){this.current=this.current+value}
+		},
+	}
+}
+
+function GenerateComponent(name){
+	let attributes = {name:name};
+	Object.assign(attributes,COMPONENT_TEMPLATES[name])
+	return ComponentFactory(attributes);
+}
+
+let HealthComponent = GenerateComponent("HealthComponent");
 
 print(HealthComponent);
 
