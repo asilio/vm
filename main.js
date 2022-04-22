@@ -1,6 +1,6 @@
 import {Entity} from "./modules/entities.js";
 import {GenerateComponent} from "./modules/components.js";
-
+import {Display} from "./modules/display.js";
 let CONSOLE;
 
 function print(s){
