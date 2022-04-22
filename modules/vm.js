@@ -27,9 +27,11 @@ into
 	*/
 	let result = [];
 	code = code.replaceAll("\n");
+	print(code);
 	let tokens = code.split(" ");
 	while(result.length>0){
 		let token = tokens.shift();
+		print(token);
 		switch(token){
 			case "LITERAL":
 				let val = tokens.shift();
