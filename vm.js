@@ -28,6 +28,10 @@ class Entity{
 	}
 
 	addComponent(component){
+		if(this.getComponentByName(component.name)!=-1){
+			print("Uh oh, we already have this component!");
+			throw new Error(`Component ${component.name} is already part of this entity.`);
+		}
 		this.components.push(component);
         component.entity = this;
 	}
@@ -46,6 +50,7 @@ class Entity{
 			if(component.name ===name)
 				return component;
 		}
+		return -1;
 	}
 }
 
@@ -81,7 +86,15 @@ const COMPONENT_TEMPLATES = {
 		heal:function(value){
 			if(this.current+value<=this.max_health){this.current=this.current+value}
 		},
-	}
+	},
+	
+	PositionComponent:{
+		x:0,y:0,z:0
+	},
+
+	SpellsComponent:{
+		known:[]
+	},
 }
 
 function GenerateComponent(name){
