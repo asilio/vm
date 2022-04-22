@@ -29,6 +29,7 @@ into
 
 	*/
 	let result = [];
+	let val;
 	code = code.replaceAll("\n"," ");
 	print(code);
 	let tokens = code.split(" ");
@@ -40,13 +41,13 @@ into
 		print(token == "INTEGER");
 		switch(token){
 			case "INTEGER":
-				let val = tokens.shift();
+				val = tokens.shift();
 				result.push(INSTRUCTIONS["INTEGER"]);
 				result.push(parseInt(val));
 				break;
 			case "LITERAL":
 			case "STRING":
-				let val = tokens.shift();
+				val = tokens.shift();
 				result.push(INSTRUCTIONS["STRING"]);
 				result.push(val);
 				break;
