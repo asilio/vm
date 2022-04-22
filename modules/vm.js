@@ -1,4 +1,8 @@
 import {Entity} from "./entities.js";
+function print(s){
+ 	console.log(s);
+}
+
 const INSTRUCTIONS={
 	ADD:0x00,
 	SUB:0x01,
@@ -9,6 +13,35 @@ const INSTRUCTIONS={
 }
 
 
+function AssemblyToBytecode(code){/*
+We would like to be able to roll something along the lines of:
+LITERAL 1
+LITERAL 3
+ADD
+
+into 
+[0x04, 1,0x04,3,0x00]
+	*/
+	let result = [];
+	code = code.replaceAll("\n");
+	let tokens = code.split(" ");
+	while(result.length>0){
+		let token = tokens.shift();
+		switch(token){
+			case "LITERAL":
+				let val = tokens.shift();
+				result.push(INSTRUCTIONS["LITERAL"]);
+				result.push(val);
+				break;
+			default:
+				if(token in INSTRUCTIONS)
+					result.push(INSTRUCTIONS[token]);
+				else
+					result.push(token);
+		}
+	}
+	return result;
+}
 
 class VM{
 	constructor(max_stack){
@@ -38,6 +71,7 @@ class VM{
 					b = this.pop();
 					a = this.pop();
 					this.push(a+b);
+					print(`ADD => ${a+b}`);
 					break;
 				case INSTRUCTIONS["SUB"]:
 					b = this.pop();
@@ -73,3 +107,12 @@ class VM{
         print(`-------------------`);
 	}
 }
+
+let test = `
+LITERAL 1
+LITERAL 3
+ADD
+`;
+let bc = AssemblyToBytecode(test);
+let vm = new VM();
+vm.interpret(bc);
