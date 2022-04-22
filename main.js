@@ -1,4 +1,5 @@
 import {Entity} from "./modules/entities.js";
+import {GenerateComponent} from "./modules/components.js";
 
 let CONSOLE;
 
