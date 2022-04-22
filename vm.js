@@ -67,7 +67,6 @@ function ComponentFactory(attributes){
 	for(key in attributes){
 		let value = attributes[key];
 		component[key] = value;
-		print(`${key}:${value})`);
 	}
 	return component;
 }
