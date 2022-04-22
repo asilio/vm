@@ -2,7 +2,7 @@ import {Entity} from "./modules/entities.js";
 import {GenerateComponent} from "./modules/components.js";
 import {generateMap, drawMap} from "./modules/map_generator.js";
 import {Display} from "./modules/display.js";
-
+import {VM} from "./modules/vm.js";
 let CONSOLE;
 let DISPLAY;
 function print(s){

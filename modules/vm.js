@@ -120,3 +120,5 @@ let bc = AssemblyToBytecode(test);
 let vm = new VM();
 vm.interpret(bc);
 console.log("END VM");
+
+export {VM};
