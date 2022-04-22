@@ -92,6 +92,7 @@ function GenerateComponent(name){
 
 let entity = new Entity();
 let villain = new Entity();
+villain.name = "Villain!";
 entity.addComponent(GenerateComponent("HealthComponent"));
 villain.addComponent(GenerateComponent("HealthComponent"));
 villian.getComponentByName("HealthComponent").damage(5);
