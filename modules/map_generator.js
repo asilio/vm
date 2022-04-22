@@ -1,4 +1,4 @@
-import {Digger} from "https://ondras.github.io/rot.js/lib/map/digger.js";
+import Digger from "https://ondras.github.io/rot.js/lib/map/digger.js";
 
 let map = {};
 export function generateMap(){
