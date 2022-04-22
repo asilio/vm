@@ -26,7 +26,7 @@ into
 
 	*/
 	let result = [];
-	code = code.replaceAll("\n","");
+	code = code.replaceAll("\n"," ");
 	print(code);
 	let tokens = code.split(" ");
 	print(tokens);
