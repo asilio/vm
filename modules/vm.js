@@ -29,6 +29,7 @@ into
 	code = code.replaceAll("\n");
 	print(code);
 	let tokens = code.split(" ");
+	print(tokens);
 	while(result.length>0){
 		let token = tokens.shift();
 		print(token);
