@@ -25,7 +25,7 @@ class Component{
 
 function ComponentFactory(attributes){
 	let component = new Component();
-	for(key in attributes){
+	for(let key in attributes){
 		let value = attributes[key];
 		component[key] = value;
 	}
