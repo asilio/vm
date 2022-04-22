@@ -58,3 +58,5 @@ function GenerateComponent(name){
 	Object.assign(attributes,COMPONENT_TEMPLATES[name])
 	return ComponentFactory(attributes);
 }
+
+export {GenerateComponent, Component, ComponentFactory, getComponentById}
