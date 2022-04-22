@@ -1,3 +1,4 @@
+import {Entity} from "./entities.js";
 const INSTRUCTIONS={
 	ADD:0x00,
 	SUB:0x01,
