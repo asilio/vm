@@ -71,8 +71,8 @@ function ComponentFactory(attributes){
 	return component;
 }
 
-const COMPONENT_TEMPLATES ={
-	HealthComponent = {
+const COMPONENT_TEMPLATES = {
+	HealthComponent:{
 		max_health:10,
 		current:10,
 		damage:function(value){
