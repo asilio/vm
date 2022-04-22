@@ -95,7 +95,7 @@ let villain = new Entity();
 villain.name = "Villain!";
 entity.addComponent(GenerateComponent("HealthComponent"));
 villain.addComponent(GenerateComponent("HealthComponent"));
-villian.getComponentByName("HealthComponent").damage(5);
+villain.getComponentByName("HealthComponent").damage(5);
 print(entity);
 print(villain);
 /*
