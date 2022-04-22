@@ -90,12 +90,13 @@ function GenerateComponent(name){
 	return ComponentFactory(attributes);
 }
 
-let HealthComponent = GenerateComponent("HealthComponent");
-
-print(HealthComponent);
-
 let entity = new Entity();
-entity.addComponent(HealthComponent);
+let villain = new Entity();
+entity.addComponent(GenerateComponent("HealthComponent"));
+villain.addComponent(GenerateComponent("HealthComponent"));
+villian.getComponentByName("HealthComponent").damage(5);
+print(entity);
+print(villain);
 /*
 FIREBALL SPELL   
 CODE 			STACK  		COMMENT
