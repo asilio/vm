@@ -1,6 +1,6 @@
 import {Entity} from "./modules/entities.js";
 import {GenerateComponent} from "./modules/components.js";
-import {Display} from "./modules/display.js";
+import {initialize} from "./modules/display.js";
 let CONSOLE;
 
 function print(s){
@@ -18,7 +18,7 @@ function main(){
 	villain.getComponentByName("HealthComponent").damage(5);
 	print(entity);
 	print(villain);
-	print(Display);
+	initialize();
 }
 
 main();
