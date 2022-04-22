@@ -10,19 +10,22 @@ const INSTRUCTIONS={
 	DIV:0x03,
 	LITERAL:0x04,
 	DAMAGE:0x05,
+	INTEGER:0x06,
+	STRING:0x07
+
 }
 
 
 function AssemblyToBytecode(code){/*
 We would like to be able to roll something along the lines of:
 
-LITERAL 1
-LITERAL 3
+INTEGER 1
+INTEGER 3
 ADD
 
 into 
 
-[0x04, 1,0x04,3,0x00]
+[0x06, 1,0x06,3,0x00]
 
 	*/
 	let result = [];
@@ -33,10 +36,18 @@ into
 	while(result.length>0){
 		let token = tokens.shift();
 		print(token);
+		if(token == "") continue;
+		print(token == "INTEGER");
 		switch(token){
-			case "LITERAL":
+			case "INTEGER":
 				let val = tokens.shift();
-				result.push(INSTRUCTIONS["LITERAL"]);
+				result.push(INSTRUCTIONS["INTEGER"]);
+				result.push(parseInt(val));
+				break;
+			case "LITERAL":
+			case "STRING":
+				let val = tokens.shift();
+				result.push(INSTRUCTIONS["STRING"]);
 				result.push(val);
 				break;
 			default:
@@ -45,6 +56,7 @@ into
 				else
 					result.push(token);
 		}
+		print(result);
 	}
 	return result;
 }
@@ -115,8 +127,8 @@ class VM{
 }
 
 let test = `
-LITERAL 1
-LITERAL 3
+INTEGER 1
+INTEGER 3
 ADD
 `;
 console.log(test);
