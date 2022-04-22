@@ -18,6 +18,7 @@ function main(){
 	villain.getComponentByName("HealthComponent").damage(5);
 	print(entity);
 	print(villain);
+	print(Display);
 }
 
 main();
