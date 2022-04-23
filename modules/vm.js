@@ -30,15 +30,12 @@ into
 	*/
 	let result = [];
 	let val;
+	let context;
 	code = code.replaceAll("\n"," ");
-	print(code);
 	let tokens = code.split(" ");
-	print(tokens);
 	while(tokens.length>0){
 		let token = tokens.shift();
-		print(token);
 		if(token == "") continue;
-		print(token == "INTEGER");
 		switch(token){
 			case "INTEGER":
 				val = tokens.shift();
@@ -46,10 +43,13 @@ into
 				result.push(parseInt(val));
 				break;
 			case "LITERAL":
+				context = "LITERAL";
 			case "STRING":
+				context = context || "STRING"
 				val = tokens.shift();
-				result.push(INSTRUCTIONS["STRING"]);
+				result.push(INSTRUCTIONS[context]);
 				result.push(val);
+				context = undefined;
 				break;
 			default:
 				if(token in INSTRUCTIONS)
