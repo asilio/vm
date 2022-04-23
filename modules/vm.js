@@ -80,7 +80,7 @@ class VM{
 
 
 	interpret(bytecodeArray){
-		let a,b, value;
+		let a,b, value,context;
         print(`Executing ByteCode:`);
         print(`-------------------`);
 		for(let i=0;i<bytecodeArray.length;i++){
@@ -107,14 +107,20 @@ class VM{
 					a = this.pop();
 					this.push(a/b);
 					break;
+				case INSTRUCTIONS["INTEGER"]:
+					context = "INTEGER";
+				case INSTRUCTIONS["STRING"]:
+					context = "STRING";
 				case INSTRUCTIONS["LITERAL"]:
+					context = context || "LITERAL";
 					value = bytecodeArray[++i];
 					this.push(value);
-                	print(`LITERAL ${value}`);
+                	print(`${context} ${value}`);
+                	context = undefined;
 					break;
 				case INSTRUCTIONS["DAMAGE"]:
-					let b = this.pop();
-					let a = this.pop();
+					b = this.pop();
+					a = this.pop();
 					print(`DAMAGE ${a} TO ${b}`);
                 	getEntityById(b).getComponentByClass(HealthComponent).damage(a);
 					break;
