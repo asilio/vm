@@ -110,7 +110,7 @@ class VM{
 				case INSTRUCTIONS["INTEGER"]:
 					context = "INTEGER";
 				case INSTRUCTIONS["STRING"]:
-					context = "STRING";
+					context = context || "STRING";
 				case INSTRUCTIONS["LITERAL"]:
 					context = context || "LITERAL";
 					value = bytecodeArray[++i];
