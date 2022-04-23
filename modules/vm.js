@@ -11,8 +11,13 @@ const INSTRUCTIONS={
 	LITERAL:0x04,
 	DAMAGE:0x05,
 	INTEGER:0x06,
-	STRING:0x07
-
+	STRING:0x07,
+	LOAD_COMPONENT:0x08,
+	GET_DAMAGE:0x09,
+	GET_DAMAGE_TYPE:0x0A,
+	GET_LOCATION:0x0B,
+	GET_TOP_LAYER_ENTITY_AT_LOCATION:0x0C,
+	APPLY_DAMAGE_TO_ENTITY:0x0D
 }
 
 
@@ -57,7 +62,6 @@ into
 				else
 					result.push(token);
 		}
-		print(result);
 	}
 	return result;
 }
