@@ -34,7 +34,7 @@ into
 	print(code);
 	let tokens = code.split(" ");
 	print(tokens);
-	while(result.length>0){
+	while(tokens.length>0){
 		let token = tokens.shift();
 		print(token);
 		if(token == "") continue;
